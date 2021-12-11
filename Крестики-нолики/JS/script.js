@@ -7,7 +7,8 @@ function btn1 () {
     // Получение значения в кнопке
     button = document.getElementById("id_1").innerHTML; // document.getElementById() - возвращает ссылку на элемент по его идентификатору (ID)
     if(button === "") {
-        if (step%2==1){
+        // По номеру шага определяем очередь. Если шаг имеет нечётное значение, то выставляется Х. В обратном случе - 0.
+        if (step%2==1){ 
             cell = "X";
         }
         else{
@@ -15,13 +16,13 @@ function btn1 () {
         }
         // Записываем значение в кнопке
         document.getElementById("id_1").innerHTML  = cell;
-        step = step + 1;
+        step = step + 1; 
     }
     // Вызов функции с проверкой хода
     check();     
 }
 
-
+// Здесь не знала, как оптимизировать код, поэтому прописала такую же функцию для каждой кнокпи. А если бы дедлайн не был до конца занятий, то сделала бы лучше))
 function btn2 () {     
     button = document.getElementById("id_2").innerHTML;
     if(button === "") {
@@ -149,7 +150,7 @@ function btn9 () {
     check();     
 }
 
-
+// Функция проверки хода
 function  check() {
     // Запись значений всех ячеек поля в переменные
     a1 = document.getElementById("id_1").innerHTML;
@@ -161,12 +162,12 @@ function  check() {
     c1 = document.getElementById("id_7").innerHTML;
     c2 = document.getElementById("id_8").innerHTML;
     c3 = document.getElementById("id_9").innerHTML;
-    func=[
+    func=[ 
         [a1,a2,a3],
         [b1,b2,b3],
         [c1,c2,c3]
-    ];
-    // Проверка хода
+    ]; // Поле
+    // Проверка хода. Здесь перебираются все возможные комбинации.
     if (func[0][0]==="X" && func[0][1]==="X" && func[0][2]==="X"){
         alert('Победитель: Игрок 1');
         // Обновление страницы  
@@ -232,7 +233,8 @@ function  check() {
         alert('Победитель: Игрок 2');  
         location.reload();
     }
-    else if (step===10){
+    // Предусматриваем возможность "ничьи" в случае, если все клетки заполнены, а победитель не определён.
+    else if (step===10){ 
         alert('Ничья!');  
         location.reload(); 
     }
